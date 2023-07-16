@@ -21,7 +21,7 @@ public class UserDaoJDBCImpl implements UserDao {
             Statement statement = connection.createStatement();
 
 
-            String SQL = "CREATE TABLE IF NOT EXISTS `kata_db`.`users` (\n" +
+            String SQL = "CREATE TABLE IF NOT EXISTS users (\n" +
                     "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
                     "  `name` VARCHAR(45) NOT NULL,\n" +
                     "  `lastName` VARCHAR(45) NOT NULL,\n" +
