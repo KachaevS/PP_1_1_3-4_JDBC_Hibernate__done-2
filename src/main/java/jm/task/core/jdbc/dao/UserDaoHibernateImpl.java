@@ -14,7 +14,7 @@ import static jm.task.core.jdbc.util.Util.getSessionFactory;
 
 public class UserDaoHibernateImpl implements UserDao {
 
-    private SessionFactory sessionFactoryHere;
+    private final SessionFactory sessionFactoryHere;
 
 
     public UserDaoHibernateImpl() {
@@ -74,9 +74,9 @@ public class UserDaoHibernateImpl implements UserDao {
     public void removeUserById(long id) {
         Session session = sessionFactoryHere.openSession();
         Transaction transaction = session.beginTransaction();
-        User user = session.load(User.class, id);
-        session.delete(user);
-        session.flush();
+        String hql = "delete User where id = " + id;
+        Query query = session.createQuery(hql);
+        query.executeUpdate();
         transaction.commit();
         session.close();
 
